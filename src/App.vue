@@ -36,9 +36,11 @@ export default {
   created() {
     this.loop();
     window.addEventListener("keypress", this.coding);
+    window.addEventListener("click", this.coding);
   },
   destroyed() {
     window.removeEventListener("keypress", this.coding);
+    window.addEventListener("click", this.coding);
   }
 };
 </script>
