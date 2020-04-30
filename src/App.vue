@@ -1,16 +1,19 @@
 <template>
   <div id="game">
     <Overview />
+    <Upgrades />
     <router-view />
   </div>
 </template>
 
 <script>
 import Overview from "./components/Overview";
+import Upgrades from "./components/Upgrades";
 export default {
   name: "app",
   components: {
-    Overview
+    Overview,
+    Upgrades
   },
   methods: {
     coding() {
@@ -21,6 +24,7 @@ export default {
       // GAME LOOP
       this.levelManager();
       requestAnimationFrame(this.loop);
+      this.$store.commit("bytesPerSecond");
     },
     levelManager() {
       console.log("FPS");
