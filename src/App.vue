@@ -14,14 +14,22 @@ export default {
   },
   methods: {
     coding() {
-      // DO SOMETHING
+      // console.log("It's working");
+      this.$store.commit("incrementBytes", this.$store.state.bpk);
     },
     loop() {
       // GAME LOOP
+      this.levelManager();
       requestAnimationFrame(this.loop);
+    },
+    levelManager() {
+      console.log("FPS");
+      if (this.$store.getters.bytesUntilLevelUp <= 0) {
+        this.$store.commit("levelUp");
+      }
     }
   },
-  cretaed() {
+  created() {
     this.loop();
     window.addEventListener("keypress", this.coding);
   },
